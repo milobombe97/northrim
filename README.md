@@ -21,3 +21,7 @@ cp .env.example .env
 npm install
 npm run dev
 ```
+
+Open **http://localhost:5190** (North Rim only — do not use port 5173; that is often the older `revolut-clone` / Nevolute app).
+
+There is **no public URL** until you deploy (e.g. Vercel) and connect **northrimbankinc.com**.
