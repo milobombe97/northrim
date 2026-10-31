@@ -5,6 +5,7 @@ import { Footer } from '../components/Footer'
 import { Header } from '../components/Header'
 import { FadeIn, Reveal } from '../components/Reveal'
 import { personalPlans } from '../data/plans'
+import { HomeFeatureSlider } from '../components/HomeFeatureSlider'
 import { PlansShowcase } from '../components/PlansCarousel'
 
 const photos = {
@@ -97,6 +98,51 @@ export function HomePage() {
           ))}
         </div>
       </section>
+
+      <HomeFeatureSlider
+        slides={[
+          {
+            kicker: 'Current accounts',
+            title: 'Salary and reserves on one profile',
+            body: 'Balances are shown before a payment is submitted. Identity status is shown before a payment is released.',
+            href: '/signup',
+            cta: 'Open an account',
+            image: '/images/north-rim/slide-accounts.jpg',
+            alt: 'Account holder at a desk in a bright office',
+            focus: 'object-[center_35%]',
+          },
+          {
+            kicker: 'Cards',
+            title: 'Debit cards linked to your balances',
+            body: 'Physical and virtual cards draw on the accounts you hold. Freeze a card or set a spending limit from the dashboard.',
+            href: '/cards',
+            cta: 'See cards',
+            image: '/images/north-rim/slide-cards.jpg',
+            alt: 'A black card held at a payment terminal',
+            focus: 'object-[72%_center]',
+          },
+          {
+            kicker: 'Business',
+            title: 'A second approval on larger payments',
+            body: 'Operating funds are held separately from personal balances. Payments above the threshold stay pending until another authorised user approves them.',
+            href: '/business',
+            cta: 'Business banking',
+            image: '/images/north-rim/slide-business.jpg',
+            alt: 'Two colleagues reviewing a payment for approval',
+            focus: 'object-[center_40%]',
+          },
+          {
+            kicker: 'Authorised users',
+            title: 'More than one person on the account',
+            body: 'Add an authorised user when salary, savings, or company funds need a shared view and a second signature.',
+            href: '/signup',
+            cta: 'Start an application',
+            image: '/images/north-rim/slide-users.jpg',
+            alt: 'Two colleagues looking at one laptop',
+            focus: 'object-[center_25%]',
+          },
+        ]}
+      />
 
       <section className="bg-[#f7f4ef] py-20 lg:py-28">
         <div className="mx-auto grid max-w-[1280px] items-center gap-14 px-6 lg:grid-cols-2 lg:px-10">
