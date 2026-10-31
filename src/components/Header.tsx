@@ -5,6 +5,7 @@ import { useAccount } from '../auth/useAccount'
 import { megaMenus, type MegaMenuId } from '../data/megaMenu'
 import { useMegaMenu, type OpenMenu } from '../hooks/useMegaMenu'
 import { Button } from './Button'
+import { BrandWordmark } from './BrandWordmark'
 import { KidsDropdown } from './KidsDropdown'
 import { MegaMenuPanel } from './MegaMenuPanel'
 import { ScrollHeader } from './ScrollHeader'
@@ -49,13 +50,15 @@ export function Header({ theme = 'dark' }: { theme?: 'dark' | 'light' }) {
             <Link
               to="/"
               onClick={closeImmediately}
-              className={`relative z-10 text-[1.125rem] font-semibold tracking-[-0.03em] ${
-                isDark
-                  ? 'text-white group-data-[scrolled=true]:!text-revolut-ink'
-                  : 'text-revolut-ink'
-              }`}
+              className="relative z-10 text-[1.125rem]"
             >
-              North Rim Inc
+              <BrandWordmark
+                className={
+                  isDark
+                    ? 'text-white group-data-[scrolled=true]:!text-revolut-ink'
+                    : 'text-revolut-ink'
+                }
+              />
             </Link>
 
             <nav

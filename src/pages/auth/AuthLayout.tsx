@@ -1,6 +1,7 @@
 import { type ReactNode } from 'react'
 import { Link } from 'react-router-dom'
-import { images } from '../../data/images'
+import { BrandWordmark } from '../../components/BrandWordmark'
+import { brand } from '../../config/brand'
 
 export function AuthLayout({
   title,
@@ -17,27 +18,29 @@ export function AuthLayout({
 }) {
   return (
     <div className="grid min-h-screen lg:grid-cols-[minmax(0,0.9fr)_minmax(420px,1fr)]">
-      <aside className="relative hidden overflow-hidden bg-[#79b4e6] text-white lg:flex lg:flex-col lg:justify-between lg:p-12">
-        <img src={images.heroPortrait} alt="" className="absolute inset-0 h-full w-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#163a66]/50 via-[#163a66]/10 to-[#163a66]/20" />
-        <Link to="/" className="relative text-xl font-semibold tracking-[-0.03em]">
-          North Rim
+      <aside className="relative hidden overflow-hidden bg-[#0f1c2e] text-white lg:flex lg:flex-col lg:justify-between lg:p-12">
+        <div
+          className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_100%_0%,#b87333/25,transparent_50%)]"
+          aria-hidden
+        />
+        <Link to="/" className="relative text-xl">
+          <BrandWordmark />
         </Link>
         <div className="relative">
-          <p className="max-w-sm text-4xl font-medium leading-[1.05] tracking-[-0.04em]">
+          <p className="max-w-sm font-[family-name:var(--font-display)] text-4xl font-medium leading-[1.05] tracking-[-0.04em]">
             Everyday banking, with identity checks built in.
           </p>
           <p className="mt-4 max-w-sm text-white/90">
-            Create a North Rim Inc account, then confirm who you are.
+            Create a {brand.wordmark} account, then confirm who you are.
           </p>
         </div>
-        <p className="relative text-sm text-white/80">North Rim Inc</p>
+        <p className="relative text-sm text-white/80">{brand.wordmark}</p>
       </aside>
 
       <main className="flex flex-col bg-white">
         <div className="flex items-center justify-between px-6 py-5 lg:px-12">
-          <Link to="/" className="text-lg font-semibold tracking-[-0.03em] lg:invisible">
-            North Rim
+          <Link to="/" className="text-lg lg:invisible">
+            <BrandWordmark />
           </Link>
           <Link to="/" className="text-sm text-revolut-ink/60 hover:text-revolut-ink">
             Back to site

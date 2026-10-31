@@ -4,6 +4,7 @@ import { signInAdmin } from '../../auth/admins'
 import { useAuth } from '../../auth/AuthContext'
 import { useAdmin } from '../../auth/useAdmin'
 import { Button } from '../../components/Button'
+import { BrandWordmark } from '../../components/BrandWordmark'
 import { Field } from '../../components/Field'
 import { IconText, PasswordInput } from '../../components/PasswordInput'
 
@@ -52,8 +53,8 @@ export function AdminLoginPage() {
 
   return (
     <main className="mx-auto flex min-h-screen max-w-md flex-col justify-center px-6 py-12">
-      <Link to="/" className="text-lg font-semibold tracking-[-0.03em]">
-        North Rim
+      <Link to="/" className="text-lg">
+        <BrandWordmark />
       </Link>
       <h1 className="mt-8 text-3xl font-medium tracking-[-0.04em]">Admin login</h1>
       <p className="mt-2 text-sm text-revolut-ink/60">

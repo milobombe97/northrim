@@ -2,6 +2,8 @@ import { useEffect, useMemo, useState } from 'react'
 import { Link, NavLink, Navigate, Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../auth/AuthContext'
 import { ReceiptDock } from '../../components/ReceiptDock'
+import { BrandWordmark } from '../../components/BrandWordmark'
+import { brand } from '../../config/brand'
 import { useAccount } from '../../auth/useAccount'
 import { accountStatusOf } from '../../data/adminAccounts'
 import { loadTransactions } from '../../data/banking'
@@ -101,8 +103,8 @@ export function DashboardLayout() {
     <ReceiptDock />
     <div className="min-h-screen bg-[#f3f4f5] text-revolut-ink lg:grid lg:grid-cols-[248px_1fr]">
       <header className="sticky top-0 z-30 flex items-center justify-between border-b border-revolut-line bg-white px-4 py-3 lg:hidden">
-        <NavLink to="/" className="text-lg font-semibold tracking-[-0.03em]">
-          North Rim
+        <NavLink to="/" className="text-lg">
+          <BrandWordmark />
         </NavLink>
         <div className="flex items-center">
           <NavLink
@@ -141,8 +143,8 @@ export function DashboardLayout() {
           menuOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
-        <NavLink to="/" className="hidden px-3 text-lg font-semibold tracking-[-0.03em] lg:block">
-          North Rim
+        <NavLink to="/" className="hidden px-3 text-lg lg:block">
+          <BrandWordmark />
         </NavLink>
         <nav className="flex flex-col gap-1 lg:mt-6">
           {links.map((link) => (
@@ -198,7 +200,7 @@ export function DashboardLayout() {
           <Outlet />
         </div>
         <footer className="px-5 pb-8 text-sm text-revolut-ink/50 lg:px-8">
-          <p>© North Rim Inc 2026. All rights reserved.</p>
+          <p>© {brand.legalName} 2026. All rights reserved.</p>
         </footer>
       </div>
     </div>

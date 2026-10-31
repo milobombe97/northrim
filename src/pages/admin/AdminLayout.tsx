@@ -3,6 +3,8 @@ import { NavLink, Navigate, Outlet, useLocation, useNavigate } from 'react-route
 import { useAuth } from '../../auth/AuthContext'
 import { useAdmin } from '../../auth/useAdmin'
 import { Glyph, type FieldIconName } from '../../components/PasswordInput'
+import { BrandWordmark } from '../../components/BrandWordmark'
+import { brand } from '../../config/brand'
 import { buildAdminNotifications, loadAdminReadIds } from '../../data/adminNotifications'
 import { useAdminTick } from './useAdminTick'
 
@@ -39,8 +41,8 @@ export function AdminLayout() {
   return (
     <div className="min-h-screen bg-[#f3f4f5] text-revolut-ink lg:grid lg:grid-cols-[248px_1fr]">
       <header className="sticky top-0 z-30 flex items-center justify-between border-b border-revolut-line bg-white px-4 py-3 lg:hidden">
-        <NavLink to="/admin" className="text-lg font-semibold tracking-[-0.03em]">
-          North Rim
+        <NavLink to="/admin" className="text-lg lg:hidden">
+          <BrandWordmark />
         </NavLink>
         <div className="flex items-center">
           <NavLink
@@ -79,8 +81,8 @@ export function AdminLayout() {
           menuOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
-        <NavLink to="/admin" className="hidden px-3 text-lg font-semibold tracking-[-0.03em] lg:block">
-          North Rim
+        <NavLink to="/admin" className="hidden px-3 text-lg lg:block">
+          <BrandWordmark />
         </NavLink>
         <p className="px-3 text-xs text-revolut-ink/50">{admin.role === 'super' ? 'Super admin' : 'Admin'}</p>
         <nav className="mt-6 flex flex-col gap-1">
@@ -123,7 +125,7 @@ export function AdminLayout() {
           <Outlet />
         </div>
         <footer className="px-5 pb-8 text-sm text-revolut-ink/50 lg:px-8">
-          <p>© North Rim Inc 2026. All rights reserved.</p>
+          <p>© {brand.legalName} 2026. All rights reserved.</p>
         </footer>
       </div>
     </div>
