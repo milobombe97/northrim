@@ -1,0 +1,173 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'DM Sans', system-ui, sans-serif;
+  --font-display: 'Fraunces', Georgia, serif;
+  --color-revolut-ink: #191c1f;
+  --color-revolut-ink-soft: #3d4449;
+  --color-revolut-sky: #8ec5f0;
+  --color-revolut-sky-deep: #5a9fd4;
+  --color-revolut-sky-hero: #7eb5e8;
+  --color-revolut-muted: #f4f5f6;
+  --color-revolut-line: #e2e4e6;
+  --ease-revolut: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply m-0 min-h-screen bg-white font-sans text-[1rem] leading-[1.45] text-revolut-ink antialiased;
+    font-feature-settings: 'cv11' on, 'ss01' on;
+  }
+
+  #root {
+    @apply min-h-screen;
+  }
+}
+
+@layer components {
+  .type-display {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+  }
+
+  .type-h2 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+
+  .type-h3 {
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+
+  .type-body-lg {
+    font-size: 1.125rem;
+    line-height: 1.5;
+    letter-spacing: -0.015em;
+  }
+
+  .type-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+
+  .marquee-mask {
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 8%,
+      black 92%,
+      transparent
+    );
+  }
+
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee-scroll var(--marquee-duration, 45s) linear infinite;
+  }
+
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+
+  .marquee-group {
+    display: flex;
+    flex-shrink: 0;
+    gap: 1rem;
+    padding-right: 1rem;
+  }
+
+  @keyframes marquee-scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  .header-glass {
+    @apply border-b border-white/10 bg-black/10 backdrop-blur-md;
+  }
+
+  .header-glass-light {
+    @apply border-b border-revolut-line/80 bg-white/80 backdrop-blur-md;
+  }
+
+  .tab-pill {
+    @apply rounded-full px-5 py-2.5 text-sm font-medium transition-all duration-300;
+    transition-timing-function: var(--ease-revolut);
+  }
+
+  .plans-scroll {
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .plans-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  .plan-card {
+    scroll-snap-align: start;
+  }
+
+  .cashback-frame {
+    background: conic-gradient(
+      from var(--cashback-angle),
+      #ffedd5,
+      #fb923c,
+      #f97316,
+      #ef4444,
+      #e11d48,
+      #fb7185,
+      #fdba74,
+      #ffedd5
+    );
+    animation: cashback-spin 3.2s linear infinite;
+  }
+}
+
+@property --cashback-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes cashback-spin {
+  to {
+    --cashback-angle: 360deg;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track,
+  .cashback-frame {
+    animation: none;
+  }
+
+  .cashback-frame {
+    background: linear-gradient(120deg, #fb923c, #e11d48);
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}

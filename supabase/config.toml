@@ -1,0 +1,7 @@
+# Supabase local config. See https://supabase.com/docs/guides/cli/config
+
+[functions.admin-staff]
+verify_jwt = true
+
+[functions.transactional-email]
+verify_jwt = false

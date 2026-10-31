@@ -1,0 +1,13 @@
+{
+  "description": "Reference for Supabase Database Webhooks (configure in Dashboard, not imported automatically).",
+  "function_url": "https://YOUR_PROJECT_REF.supabase.co/functions/v1/transactional-email",
+  "headers": {
+    "x-webhook-secret": "YOUR_SUPABASE_WEBHOOK_SECRET"
+  },
+  "webhooks": [
+    { "name": "email-profiles", "table": "profiles", "schema": "public", "events": ["INSERT", "UPDATE"] },
+    { "name": "email-kyc", "table": "kyc_submissions", "schema": "public", "events": ["INSERT", "UPDATE"] },
+    { "name": "email-receipts", "table": "receipts", "schema": "public", "events": ["INSERT", "UPDATE"] },
+    { "name": "email-transactions", "table": "transactions", "schema": "public", "events": ["INSERT"] }
+  ]
+}
