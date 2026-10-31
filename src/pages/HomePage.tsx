@@ -13,7 +13,6 @@ const photos = {
   client: '/images/north-rim/client.jpg',
   card: '/images/north-rim/card-daylight.jpg',
   collab: '/images/north-rim/authorised-users.jpg',
-  meeting: '/images/north-rim/business-review.jpg',
 }
 
 const assurances = [
@@ -208,22 +207,18 @@ export function HomePage() {
             </figure>
           </Reveal>
           <Reveal delay={0.08}>
-            <figure className="relative min-h-[280px] overflow-hidden rounded-[2rem] text-white">
-              <img src={photos.meeting} alt="Two colleagues reviewing an account at a table" className="absolute inset-0 h-full w-full object-cover object-[center_30%]" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0c1210]/88 via-[#0c1210]/42 to-[#0c1210]/10" />
-              <figcaption className="relative flex h-full min-h-[320px] flex-col justify-end p-8">
-                <p className="text-[11px] font-medium uppercase tracking-[0.28em] text-[#e6c98a]">Business</p>
-                <h2 className="mt-3 font-[family-name:var(--font-display)] text-4xl font-medium leading-[1.05] tracking-[-0.035em]">
-                  Business accounts with dual approval
-                </h2>
-                <p className="mt-4 max-w-md text-white/80">
-                  Operating funds are held separately from personal balances. Payments above the set threshold remain pending until a second authorised user approves them.
-                </p>
-                <Link to="/business" className="mt-6 inline-flex w-fit rounded-full bg-white px-6 py-3 text-sm font-medium text-[#14181f]">
-                  Business banking
-                </Link>
-              </figcaption>
-            </figure>
+            <div className="flex h-full flex-col justify-center px-2 py-8 sm:px-8">
+              <p className="text-[11px] font-medium uppercase tracking-[0.28em] text-[#8a7044]">Business</p>
+              <h2 className="mt-3 font-[family-name:var(--font-display)] text-4xl font-medium leading-[1.05] tracking-[-0.035em]">
+                Business accounts with dual approval
+              </h2>
+              <p className="mt-4 max-w-md text-lg leading-relaxed text-[#14181f]/70">
+                Operating funds are held separately from personal balances. Payments above the set threshold remain pending until a second authorised user approves them.
+              </p>
+              <Link to="/business" className="mt-6 inline-flex w-fit rounded-full bg-[#14181f] px-6 py-3 text-sm font-medium text-white">
+                Business banking
+              </Link>
+            </div>
           </Reveal>
         </div>
       </section>
