@@ -1,5 +1,5 @@
 import { type FormEvent, useState } from 'react'
-import { updateAdmin, type AdminUser } from '../../auth/admins'
+import { adoptRemoteAdmin, isLocalDemoAdminId, updateAdmin, type AdminUser } from '../../auth/admins'
 import { supabaseEnabled } from '../../lib/supabase'
 import { updateStaffOnRemote } from '../../data/remote'
 import { Button } from '../../components/Button'
@@ -39,7 +39,7 @@ export function AdminProfileForm({
       return
     }
     const nextPassword = password.trim()
-    const isRemoteStaffAccount = supabaseEnabled() && admin.id !== 'super' && !admin.id.startsWith('admin-')
+    const isRemoteStaffAccount = supabaseEnabled() && !isLocalDemoAdminId(admin.id)
     if (isRemoteStaffAccount) {
       const remote = await updateStaffOnRemote(admin.id, {
         firstName: firstName.trim(),
@@ -52,6 +52,21 @@ export function AdminProfileForm({
         setSaved('')
         return
       }
+      adoptRemoteAdmin({
+        ...admin,
+        firstName: firstName.trim(),
+        lastName: lastName.trim(),
+        email: email.trim(),
+        password: '',
+      })
+      setError('')
+      setSaved(
+        nextPassword
+          ? 'Profile and password saved. If you changed your password, sign in again with the new password.'
+          : 'Profile saved.',
+      )
+      setPassword('')
+      return
     }
     const result = updateAdmin(actorId, admin.id, {
       firstName,

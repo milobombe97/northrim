@@ -58,8 +58,15 @@ export function signInAdmin(email: string, password: string) {
   return admin
 }
 
+/** Local demo account only — not a Supabase user. */
+export function isLocalDemoAdminId(id: string) {
+  return id === 'super' || id.startsWith('admin-')
+}
+
 export function adoptRemoteAdmin(admin: AdminUser) {
-  const without = loadAdmins().filter((item) => item.id !== admin.id)
+  const without = loadAdmins().filter(
+    (item) => item.id !== admin.id && !(admin.role === 'super' && isLocalDemoAdminId(item.id)),
+  )
   saveAdmins([admin, ...without])
   localStorage.setItem(SESSION_KEY, admin.id)
   window.dispatchEvent(new Event('admins-changed'))
@@ -89,7 +96,14 @@ export function updateAdmin(
     return 'The super admin profile can only be edited by signing in as that account.'
   }
   const email = patch.email.trim()
-  if (admins.some((item) => item.id !== id && item.email.toLowerCase() === email.toLowerCase())) {
+  if (
+    admins.some(
+      (item) =>
+        item.id !== id &&
+        !isLocalDemoAdminId(item.id) &&
+        item.email.toLowerCase() === email.toLowerCase(),
+    )
+  ) {
     return 'Another admin already uses that email.'
   }
   if (patch.password && patch.password.length < 8) return 'Use at least 8 characters.'

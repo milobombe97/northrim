@@ -12,7 +12,7 @@ export function AdminSettingsPage() {
         admin={admin}
         actorId={admin.id}
         title="Profile settings"
-        intro="Update your name, email, and password. This stays in this browser."
+        intro="Update your name, email, and password. Changes apply to your Supabase staff login."
       />
     </main>
   )
