@@ -12,20 +12,12 @@ Production site: **https://northrimbankinc.com**
 
 ## Git
 
-This project is its own repository (separate from `revolut-clone`):
+Remote: **[github.com/milobombe97/northrim](https://github.com/milobombe97/northrim)** (`main`)
 
 ```bash
-cd north-rim-bank
-git log -1 --oneline
+git clone https://github.com/milobombe97/northrim.git
+cd northrim
+cp .env.example .env
+npm install
+npm run dev
 ```
-
-To publish a remote:
-
-**GitHub**
-
-```bash
-gh auth login
-gh repo create north-rim-bank --private --source=. --remote=origin --push
-```
-
-**Cursor Origin** (macOS/Linux/WSL — install the `origin` CLI, then `origin repo create north-rim-bank` and add the printed clone URL as `origin`).
