@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import { brand } from '../config/brand'
-import { Button } from '../components/Button'
 import { CookieBanner } from '../components/CookieBanner'
 import { Footer } from '../components/Footer'
 import { Header } from '../components/Header'
@@ -8,240 +7,179 @@ import { FadeIn, Reveal } from '../components/Reveal'
 import { personalPlans } from '../data/plans'
 import { PlansShowcase } from '../components/PlansCarousel'
 
-const steps = [
-  { step: '01', title: 'Apply online', body: 'Tell us about you or your business in a guided flow.' },
-  { step: '02', title: 'Verify identity', body: 'Upload documents once; our team reviews every submission.' },
-  { step: '03', title: 'Use your dashboard', body: 'Move money, request payments, and track activity in one place.' },
-]
-
-const bento = [
-  {
-    title: 'Checking & savings',
-    body: 'Separate buckets for operating cash and reserves, with balances in USD, GBP, or EUR.',
-    to: '/accounts',
-    span: 'lg:col-span-2',
-  },
-  {
-    title: 'Cards',
-    body: 'Virtual and physical cards tied to the accounts you already use.',
-    to: '/cards',
-    span: '',
-  },
-  {
-    title: 'Verified payments',
-    body: 'Send to other North Rim Inc customers or pay external parties with full details.',
-    to: '/transfers',
-    span: '',
-  },
-  {
-    title: 'Business tools',
-    body: 'Team access, payout methods, and admin review for high-value transfers.',
-    to: '/business',
-    span: 'lg:col-span-2',
-  },
-]
-
-function RidgePattern() {
-  return (
-    <svg
-      className="pointer-events-none absolute inset-0 h-full w-full opacity-[0.07]"
-      aria-hidden
-      preserveAspectRatio="none"
-      viewBox="0 0 1200 600"
-    >
-      <path
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        d="M0 420 Q200 320 400 380 T800 340 T1200 400"
-      />
-      <path
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1"
-        d="M0 480 Q250 400 500 460 T1000 420 T1200 460"
-      />
-      <path
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="0.75"
-        d="M0 520 Q300 460 600 500 T1200 520"
-      />
-    </svg>
-  )
+const photos = {
+  canyon: '/images/north-rim/canyon.jpg',
+  portrait: '/images/north-rim/portrait.jpg',
+  card: '/images/north-rim/card.jpg',
+  interior: '/images/north-rim/interior.jpg',
 }
 
 export function HomePage() {
   return (
-    <div className="bg-[#faf8f5] text-[#0f1c2e]">
-      <section className="relative overflow-hidden border-b border-[#0f1c2e]/10">
-        <div className="absolute inset-0 bg-[linear-gradient(165deg,#faf8f5_0%,#eef1f6_45%,#e3e9f0_100%)]" />
-        <RidgePattern />
+    <div className="bg-[#f7f4ef] text-[#14181f]">
+      <section className="relative min-h-[100svh] overflow-hidden text-white">
+        <img
+          src={photos.canyon}
+          alt="Sandstone canyon in warm light"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(12,18,16,0.88)_0%,rgba(12,18,16,0.62)_38%,rgba(12,18,16,0.18)_68%,rgba(12,18,16,0.05)_100%)]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0c1210]/45 via-transparent to-[#0c1210]/30" />
 
-        <Header theme="light" />
+        <Header theme="dark" />
 
-        <div className="relative mx-auto max-w-7xl px-5 pb-20 pt-24 lg:px-8 lg:pb-28 lg:pt-28">
-          <div className="grid gap-14 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
+        <div className="relative mx-auto grid min-h-[100svh] max-w-[1280px] items-center gap-12 px-6 pb-16 pt-28 lg:grid-cols-[minmax(0,1.1fr)_380px] lg:px-10">
             <FadeIn>
-              <p className="inline-flex items-center gap-2 rounded-full border border-[#0f1c2e]/15 bg-white/70 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-[#0f1c2e]/70 backdrop-blur-sm">
-                Member-led digital banking
-              </p>
-              <h1 className="mt-8 font-[family-name:var(--font-display)] text-[clamp(2.75rem,6vw,4.5rem)] font-semibold leading-[1.02] tracking-[-0.04em] text-[#0f1c2e]">
+              <p className="text-[11px] font-medium uppercase tracking-[0.32em] text-[#e6c98a]">
                 {brand.wordmark}
-              </h1>
-              <p className="mt-6 max-w-xl text-xl leading-relaxed text-[#0f1c2e]/72">
-                Secure accounts, thoughtful verification, and a dashboard built for people who
-                expect clarity—not clutter—from their bank.
               </p>
-              <div className="mt-10 flex flex-wrap gap-3">
-                <Button href="/signup">Open an account</Button>
-                <Button
-                  variant="secondary"
-                  href="/signin"
-                  className="border-[#0f1c2e]/15 bg-white/80"
+              <h1 className="mt-5 max-w-[11ch] font-[family-name:var(--font-display)] text-[clamp(3.2rem,6.2vw,5.4rem)] font-medium leading-[0.92] tracking-[-0.045em] text-white">
+                Banking with a longer view
+              </h1>
+              <p className="mt-6 max-w-md text-lg leading-relaxed text-white/78">
+                Accounts, cards, and reviewed payments for people who want a bank that looks as considered as the money it holds.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Link
+                  to="/signup"
+                  className="inline-flex rounded-full bg-white px-6 py-3 text-sm font-medium text-[#14181f] transition hover:bg-[#f7f4ef]"
+                >
+                  Open an account
+                </Link>
+                <Link
+                  to="/signin"
+                  className="inline-flex rounded-full border border-white/35 px-6 py-3 text-sm font-medium text-white transition hover:bg-white/10"
                 >
                   Sign in
-                </Button>
-              </div>
-            </FadeIn>
-
-            <FadeIn delay={0.12} className="lg:pb-4">
-              <div className="relative overflow-hidden rounded-[1.5rem] bg-[#0f1c2e] p-8 text-white shadow-[0_24px_60px_-20px_rgba(15,28,46,0.45)]">
-                <div className="absolute -right-8 -top-8 h-40 w-40 rounded-full bg-[#b87333]/30 blur-2xl" aria-hidden />
-                <p className="text-sm text-white/60">At a glance</p>
-                <dl className="mt-6 space-y-5">
-                  <div className="flex justify-between gap-4 border-b border-white/10 pb-4">
-                    <dt className="text-white/70">Combined balance</dt>
-                    <dd className="text-2xl font-medium tabular-nums">$48,290.14</dd>
-                  </div>
-                  <div className="flex justify-between gap-4 text-sm">
-                    <dt className="text-white/60">Pending review</dt>
-                    <dd className="font-medium text-[#e8c9a0]">2 payments</dd>
-                  </div>
-                  <div className="flex justify-between gap-4 text-sm">
-                    <dt className="text-white/60">Identity</dt>
-                    <dd className="font-medium text-emerald-300/90">Verified</dd>
-                  </div>
-                </dl>
-                <Link
-                  to="/dashboard"
-                  className="mt-8 inline-flex w-full items-center justify-center rounded-full bg-[#b87333] py-3 text-sm font-semibold text-white transition hover:bg-[#c98442]"
-                >
-                  Go to dashboard
                 </Link>
-                <p className="mt-4 text-center text-xs text-white/45">Demo figures · {brand.domain}</p>
               </div>
             </FadeIn>
-          </div>
+
+            <FadeIn delay={0.1}>
+              <article className="rounded-3xl border border-white/20 bg-[#0c1210]/72 p-7 shadow-2xl backdrop-blur-xl">
+                <p className="text-xs uppercase tracking-[0.2em] text-white/60">Personal</p>
+                <p className="mt-2 text-5xl font-medium tracking-[-0.04em]">$48,290</p>
+                <p className="mt-1 text-sm text-white/65">Available across your accounts</p>
+                <Link
+                  to="/accounts"
+                  className="mt-6 inline-flex rounded-full bg-white px-5 py-2 text-sm font-medium text-[#14181f]"
+                >
+                  View accounts
+                </Link>
+              </article>
+            </FadeIn>
         </div>
       </section>
 
-      <section className="py-16 lg:py-20">
-        <div className="mx-auto grid max-w-7xl gap-8 px-5 sm:grid-cols-3 lg:px-8">
-          {[
-            { k: 'Accounts', v: 'Personal, joint & business' },
-            { k: 'Coverage', v: 'Partner bank network' },
-            { k: 'Support', v: brand.supportEmail },
-          ].map((row) => (
-            <Reveal key={row.k}>
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#0f1c2e]/45">
-                {row.k}
-              </p>
-              <p className="mt-2 text-lg font-medium text-[#0f1c2e]">{row.v}</p>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
-      <section className="border-y border-[#0f1c2e]/10 bg-white py-20 lg:py-28">
-        <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <Reveal className="max-w-2xl">
-            <h2 className="font-[family-name:var(--font-display)] text-[clamp(1.75rem,3vw,2.5rem)] font-semibold tracking-[-0.03em]">
-              How {brand.wordmark} works
-            </h2>
-            <p className="mt-4 text-lg text-[#0f1c2e]/65">
-              Three steps from application to everyday banking—each one visible in your account
-              status.
-            </p>
-          </Reveal>
-          <ol className="mt-14 grid gap-8 md:grid-cols-3">
-            {steps.map((item, i) => (
-              <Reveal key={item.step} delay={i * 0.05}>
-                <li className="relative pl-0 md:pl-6 md:border-l md:border-[#0f1c2e]/10">
-                  <span className="text-sm font-bold text-[#b87333]">{item.step}</span>
-                  <h3 className="mt-2 text-xl font-semibold tracking-tight">{item.title}</h3>
-                  <p className="mt-2 text-[#0f1c2e]/65 leading-relaxed">{item.body}</p>
-                </li>
-              </Reveal>
-            ))}
-          </ol>
-        </div>
-      </section>
-
-      <section className="py-20 lg:py-28">
-        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+      <section className="bg-[#f7f4ef] py-20 lg:py-28">
+        <div className="mx-auto grid max-w-[1280px] items-center gap-14 px-6 lg:grid-cols-2 lg:px-10">
           <Reveal>
-            <h2 className="font-[family-name:var(--font-display)] text-[clamp(1.75rem,3vw,2.5rem)] font-semibold tracking-[-0.03em]">
-              Built for how you actually bank
-            </h2>
+            <img
+              src={photos.portrait}
+              alt="Client at a city window"
+              className="aspect-[4/5] w-full rounded-[2rem] object-cover shadow-[0_30px_80px_-40px_rgba(20,24,31,0.7)]"
+            />
           </Reveal>
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {bento.map((tile, i) => (
-              <Reveal key={tile.title} delay={i * 0.04} className={tile.span}>
-                <Link
-                  to={tile.to}
-                  className={`group flex h-full flex-col justify-between rounded-2xl border border-[#0f1c2e]/10 bg-white p-8 shadow-sm transition hover:border-[#b87333]/40 hover:shadow-md ${tile.span}`}
-                >
-                  <div>
-                    <h3 className="text-xl font-semibold tracking-tight group-hover:text-[#b87333]">
-                      {tile.title}
-                    </h3>
-                    <p className="mt-3 text-[#0f1c2e]/65 leading-relaxed">{tile.body}</p>
-                  </div>
-                  <span className="mt-6 text-sm font-medium text-[#0f1c2e] group-hover:underline">
-                    Learn more →
-                  </span>
-                </Link>
-              </Reveal>
-            ))}
-          </div>
+          <Reveal delay={0.08}>
+            <p className="text-[11px] font-medium uppercase tracking-[0.28em] text-[#8a7044]">Everyday money</p>
+            <h2 className="mt-4 font-[family-name:var(--font-display)] text-[clamp(2.2rem,4vw,3.4rem)] font-medium leading-[1.05] tracking-[-0.035em]">
+              Salary, savings, and spend in one relationship
+            </h2>
+            <p className="mt-6 max-w-lg text-lg leading-relaxed text-[#14181f]/70">
+              {brand.wordmark} keeps operating cash, reserves, and cards on the same profile. You see balances before you move them, and identity status before a payment is allowed through.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link to="/signup" className="inline-flex rounded-full bg-[#14181f] px-6 py-3 text-sm font-medium text-white">
+                Open an account
+              </Link>
+              <Link to="/savings" className="inline-flex rounded-full border border-[#14181f]/15 px-6 py-3 text-sm font-medium">
+                Explore savings
+              </Link>
+            </div>
+          </Reveal>
         </div>
       </section>
 
-      <section className="bg-[#0f1c2e] py-20 text-white lg:py-24">
-        <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <Reveal className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <h2 className="font-[family-name:var(--font-display)] text-[clamp(1.75rem,3vw,2.25rem)] font-semibold tracking-[-0.03em]">
-                Plans from {brand.wordmark}
-              </h2>
-              <p className="mt-3 max-w-lg text-white/70">
-                Start with Standard and add perks as your relationship grows. Change plans anytime in
-                settings.
-              </p>
-            </div>
-            <Link to="/plans" className="text-sm font-medium text-[#e8c9a0] hover:underline">
-              Compare all plans
+      <section className="bg-[#14181f] text-white">
+        <div className="mx-auto grid max-w-[1280px] items-center gap-12 px-6 py-20 lg:grid-cols-2 lg:px-10 lg:py-28">
+          <Reveal className="order-2 lg:order-1">
+            <p className="text-[11px] font-medium uppercase tracking-[0.28em] text-[#e6c98a]">Cards</p>
+            <h2 className="mt-4 font-[family-name:var(--font-display)] text-[clamp(2.2rem,4vw,3.4rem)] font-medium leading-[1.05] tracking-[-0.035em]">
+              A card that belongs to the account
+            </h2>
+            <p className="mt-6 max-w-lg text-lg leading-relaxed text-white/70">
+              Physical and virtual cards draw from the balances you already hold. Freeze a card, set a limit, and keep subscriptions visible from the dashboard.
+            </p>
+            <Link to="/cards" className="mt-8 inline-flex rounded-full bg-white px-6 py-3 text-sm font-medium text-[#14181f]">
+              See cards
             </Link>
           </Reveal>
-          <div className="mt-12 [&_*]:text-inherit">
+          <Reveal delay={0.08} className="order-1 lg:order-2">
+            <img
+              src={photos.card}
+              alt="Hands holding a payment card beside a laptop"
+              className="aspect-[4/3] w-full rounded-[2rem] object-cover"
+            />
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="relative min-h-[560px] overflow-hidden text-white">
+        <img
+          src={photos.interior}
+          alt="Quiet modern office interior"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-[#14181f]/62" />
+        <div className="relative mx-auto flex min-h-[560px] max-w-[1280px] items-end px-6 py-16 lg:px-10">
+          <Reveal className="max-w-xl">
+            <p className="text-[11px] font-medium uppercase tracking-[0.28em] text-[#e6c98a]">Business</p>
+            <h2 className="mt-4 font-[family-name:var(--font-display)] text-[clamp(2.2rem,4vw,3.4rem)] font-medium leading-[1.05] tracking-[-0.035em]">
+              Room for the company account
+            </h2>
+            <p className="mt-5 text-lg leading-relaxed text-white/78">
+              Operating funds, payouts, and staff review sit beside personal banking. Large movements stay pending until someone on your team approves them.
+            </p>
+            <Link to="/business" className="mt-8 inline-flex rounded-full bg-white px-6 py-3 text-sm font-medium text-[#14181f]">
+              Business banking
+            </Link>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="bg-[#f7f4ef] py-20 lg:py-28">
+        <div className="mx-auto max-w-[1280px] px-6 lg:px-10">
+          <Reveal className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="text-[11px] font-medium uppercase tracking-[0.28em] text-[#8a7044]">Membership</p>
+              <h2 className="mt-4 font-[family-name:var(--font-display)] text-[clamp(2rem,3.5vw,3rem)] font-medium tracking-[-0.035em]">
+                Plans that stay readable
+              </h2>
+            </div>
+            <Link to="/plans" className="text-sm underline-offset-4 hover:underline">
+              Compare plans
+            </Link>
+          </Reveal>
+          <div className="mt-12">
             <PlansShowcase plans={personalPlans} />
           </div>
         </div>
       </section>
 
-      <section className="py-20 text-center lg:py-24">
-        <Reveal className="mx-auto max-w-lg px-5">
-          <h2 className="font-[family-name:var(--font-display)] text-[clamp(1.75rem,3vw,2.25rem)] font-semibold tracking-[-0.03em]">
-            Banking with {brand.wordmark}
-          </h2>
-          <p className="mt-4 text-[#0f1c2e]/65">
-            Join in minutes. Your data stays with our dedicated platform—not shared with other brands.
-          </p>
-          <Button className="mt-8 bg-[#0f1c2e] hover:bg-black" href="/signup">
-            Get started
-          </Button>
-        </Reveal>
+      <section className="border-t border-[#14181f]/10 bg-white py-16">
+        <div className="mx-auto flex max-w-[1280px] flex-col items-start justify-between gap-6 px-6 sm:flex-row sm:items-center lg:px-10">
+          <div>
+            <h2 className="font-[family-name:var(--font-display)] text-4xl font-medium tracking-[-0.035em]">
+              {brand.wordmark}
+            </h2>
+            <p className="mt-2 text-sm text-[#14181f]/60">
+              Photography from Unsplash. Apply online, then complete identity verification.
+            </p>
+          </div>
+          <Link to="/signup" className="inline-flex rounded-full bg-[#14181f] px-7 py-3 text-sm font-medium text-white">
+            Start application
+          </Link>
+        </div>
       </section>
 
       <Footer />

@@ -18,11 +18,13 @@ export function AuthLayout({
 }) {
   return (
     <div className="grid min-h-screen lg:grid-cols-[minmax(0,0.9fr)_minmax(420px,1fr)]">
-      <aside className="relative hidden overflow-hidden bg-[#0f1c2e] text-white lg:flex lg:flex-col lg:justify-between lg:p-12">
-        <div
-          className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_100%_0%,#b87333/25,transparent_50%)]"
-          aria-hidden
+      <aside className="relative hidden overflow-hidden bg-[#0c1210] text-white lg:flex lg:flex-col lg:justify-between lg:p-12">
+        <img
+          src="/images/north-rim/signin.jpg"
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover object-[center_20%]"
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0c1210]/88 via-[#0c1210]/45 to-[#0c1210]/25" />
         <Link to="/" className="relative text-xl">
           <BrandWordmark />
         </Link>
