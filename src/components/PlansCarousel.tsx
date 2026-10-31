@@ -11,6 +11,18 @@ export type Plan = {
   featured?: boolean
 }
 
+function PlanPoint({ children, tone }: { children: string; tone: 'light' | 'dark' }) {
+  return (
+    <li className="flex items-start gap-3">
+      <span
+        aria-hidden
+        className={`mt-[0.62rem] h-px w-4 shrink-0 ${tone === 'light' ? 'bg-[#e6c98a]' : 'bg-[#8a7044]'}`}
+      />
+      <span>{children}</span>
+    </li>
+  )
+}
+
 export function PlansShowcase({ plans }: { plans: Plan[] }) {
   const featured = plans.find((plan) => plan.featured) ?? plans[plans.length - 1]
   const rest = plans.filter((plan) => plan !== featured)
@@ -25,12 +37,11 @@ export function PlansShowcase({ plans }: { plans: Plan[] }) {
           {featured.period && <span className="text-white/60">{featured.period}</span>}
         </p>
         <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/75">{featured.description}</p>
-        <ul className="mt-6 space-y-3 border-t border-white/15 pt-6 text-sm">
+        <ul className="mt-6 list-none space-y-3 border-t border-white/15 pt-6 text-sm">
           {featured.highlights.map((item) => (
-            <li key={item} className="flex gap-3">
-              <span className="mt-2 size-1.5 shrink-0 rounded-full bg-white" />
+            <PlanPoint key={item} tone="light">
               {item}
-            </li>
+            </PlanPoint>
           ))}
         </ul>
         <Button href="/signup" variant="nav" className="mt-8 w-fit">
@@ -49,9 +60,11 @@ export function PlansShowcase({ plans }: { plans: Plan[] }) {
               </p>
             </div>
             <p className="mt-2 text-sm leading-relaxed text-revolut-ink/65">{plan.description}</p>
-            <ul className="mt-4 space-y-2 text-sm text-revolut-ink/80">
+            <ul className="mt-4 list-none space-y-2 text-sm text-revolut-ink/80">
               {plan.highlights.slice(0, 3).map((item) => (
-                <li key={item}>{item}</li>
+                <PlanPoint key={item} tone="dark">
+                  {item}
+                </PlanPoint>
               ))}
             </ul>
             <Link to={plan.href ?? '/plans'} className="mt-auto pt-5 text-sm font-medium underline-offset-4 hover:underline">
@@ -78,11 +91,11 @@ export function PlansList({ plans }: { plans: Plan[] }) {
           </div>
           <div>
             <p className="text-sm leading-relaxed text-revolut-ink/70">{plan.description}</p>
-            <ul className="mt-4 grid gap-2 sm:grid-cols-2">
+            <ul className="mt-4 grid list-none gap-2 sm:grid-cols-2">
               {plan.highlights.map((item) => (
-                <li key={item} className="text-sm text-revolut-ink/80">
+                <PlanPoint key={item} tone="dark">
                   {item}
-                </li>
+                </PlanPoint>
               ))}
             </ul>
           </div>

@@ -174,9 +174,9 @@ export const topics: Record<string, Topic> = {
   help: {
     eyebrow: 'Help',
     title: 'Contact, status, and the API',
-    lead: 'Help from North Rim Inc covers the account, payments, and this demo. Support email is support@northrimbankinc.com.',
+    lead: 'Help from North Rim Inc covers the account, payments, and this demo. Support email is info@northrimbankinc.com.',
     facts: [
-      { label: 'Support', value: 'support@northrimbankinc.com' },
+      { label: 'Support', value: 'info@northrimbankinc.com' },
       { label: 'Reviews', value: 'In the account' },
       { label: 'Status', value: 'Shown in app' },
       { label: 'API', value: 'Demo only' },
@@ -187,7 +187,7 @@ export const topics: Record<string, Topic> = {
         title: 'Where each help link goes',
         summary: 'Contact, the help centre, system status, and the developer note all use this page.',
         items: [
-          { title: 'Contact us', body: 'Email support@northrimbankinc.com. Payment declines in the app also point to that address.' },
+          { title: 'Contact us', body: 'Email info@northrimbankinc.com. Payment declines in the app also point to that address.' },
           { title: 'Help centre', body: 'Accounts, cards, transfers, identity checks, and subscriptions are explained on their own pages in this menu.' },
           { title: 'System status', body: 'A pending payment, an identity check, or a declined receipt shows its status on the account. There is no separate status board.' },
           { title: 'Developers API', body: 'The demo does not publish a public API key. Account data stays with the signed-in profile.' },
@@ -195,7 +195,7 @@ export const topics: Record<string, Topic> = {
       },
     ],
     ctaLabel: 'Email support',
-    ctaHref: 'mailto:support@northrimbankinc.com',
+    ctaHref: 'mailto:info@northrimbankinc.com',
     heroTheme: 'light',
   },
   legal: {
@@ -216,14 +216,14 @@ export const topics: Record<string, Topic> = {
         items: [
           { title: 'Website terms', body: 'The site is a design of North Rim Inc balances and payments. Nothing here moves real money.' },
           { title: 'Legal agreements', body: 'Opening an account in the demo creates a profile. It does not create a regulated account agreement.' },
-          { title: 'Complaints', body: 'Send a complaint to support@northrimbankinc.com. The address is the same one shown on a declined payment.' },
+          { title: 'Complaints', body: 'Send a complaint to info@northrimbankinc.com. The address is the same one shown on a declined payment.' },
           { title: 'Privacy', body: 'The demo stores the profile, identity files, and ledger for that account. It does not ask for a live card number.' },
-          { title: 'UK Modern Slavery Policy', body: 'North Rim Inc states that this demo does not contract suppliers or labour. The policy contact is support@northrimbankinc.com.' },
+          { title: 'UK Modern Slavery Policy', body: 'North Rim Inc states that this demo does not contract suppliers or labour. The policy contact is info@northrimbankinc.com.' },
         ],
       },
     ],
     ctaLabel: 'Contact support',
-    ctaHref: 'mailto:support@northrimbankinc.com',
+    ctaHref: 'mailto:info@northrimbankinc.com',
     heroTheme: 'light',
   },
 }

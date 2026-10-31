@@ -56,7 +56,7 @@ export function BusinessPage() {
             { title: 'APIs and integrations', body: 'Connect the account to accounting tools. This demo does not issue a live API key.' },
             { title: 'Security & controls', body: 'Roles decide who can send, who can see cards, and who can approve a payment.' },
             { title: 'Savings and crypto', body: 'Treasury savings stay on the business account. Crypto uses the same crypto page as personal accounts.' },
-            { title: 'Pricing and help', body: 'Business pricing is on the plans page. Customer help, customer stories, and guides come back to this page and to support@northrimbankinc.com.' },
+            { title: 'Pricing and help', body: 'Business pricing is on the plans page. Customer help, customer stories, and guides come back to this page and to info@northrimbankinc.com.' },
           ],
         },
       ]}

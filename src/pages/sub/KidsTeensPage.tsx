@@ -22,7 +22,7 @@ export function KidsTeensPage() {
             { title: 'For ages 6–15', body: 'A card and an allowance the parent can see. Spending limits are set by the adult, not by the child.' },
             { title: 'For ages 16–17', body: 'A teen account with more day-to-day use, still linked to a parent or guardian.' },
             { title: 'Parents and guardians', body: 'The adult sees the balance, the card, and the goals. They can pause the card from their own login.' },
-            { title: 'Help center', body: 'Questions about a youth account go to support@northrimbankinc.com, the same address as the main help page.' },
+            { title: 'Help center', body: 'Questions about a youth account go to info@northrimbankinc.com, the same address as the main help page.' },
           ],
         },
       ]}

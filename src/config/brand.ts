@@ -6,7 +6,7 @@ export const brand = {
   domain: 'northrimbankinc.com',
   publicUrl: 'https://northrimbankinc.com',
   dashboardPath: '/dashboard',
-  supportEmail: 'support@northrimbankinc.com',
+  supportEmail: 'info@northrimbankinc.com',
   adminEmail: 'info@northrimbankinc.com',
   registeredAddress: 'North Rim Inc., United States',
   peerTransferLabel: 'Another North Rim customer',

@@ -22,7 +22,7 @@ export function CompanyPage() {
             { title: 'About North Rim Inc', body: 'The company started so people could hold, send, and spend money in one account, with the fee written down before they subscribe.' },
             { title: 'Sustainability', body: 'Progress on carbon, inclusion, and product design is published with the company, not buried in a footer link that goes nowhere.' },
             { title: 'Code of conduct', body: 'Staff and the product follow the same rule: do not ask a customer for a password by email, and do not post a payment that was declined.' },
-            { title: 'Careers', body: 'Roles are sent through support@northrimbankinc.com. This demo does not list open jobs.' },
+            { title: 'Careers', body: 'Roles are sent through info@northrimbankinc.com. This demo does not list open jobs.' },
           ],
         },
       ]}

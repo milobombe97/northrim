@@ -11,8 +11,8 @@ const photos = {
   hero: '/images/north-rim/hero.jpg',
   client: '/images/north-rim/client.jpg',
   card: '/images/north-rim/card-daylight.jpg',
-  collab: '/images/north-rim/collab.jpg',
-  meeting: '/images/north-rim/meeting.jpg',
+  collab: '/images/north-rim/authorised-users.jpg',
+  meeting: '/images/north-rim/business-review.jpg',
 }
 
 const assurances = [
@@ -155,7 +155,7 @@ export function HomePage() {
         <div className="mx-auto grid max-w-[1280px] gap-4 px-6 sm:grid-cols-2 lg:px-10">
           <Reveal>
             <figure className="relative overflow-hidden rounded-[2rem]">
-              <img src={photos.collab} alt="Colleagues reviewing work together" className="aspect-[5/4] w-full object-cover" />
+              <img src={photos.collab} alt="Two account holders confirming an agreement" className="aspect-[5/4] w-full object-cover object-[center_40%]" />
               <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#0c1210]/80 to-transparent px-6 pb-6 pt-16 text-sm font-medium text-white">
                 Authorised users on one account
               </figcaption>
@@ -163,8 +163,8 @@ export function HomePage() {
           </Reveal>
           <Reveal delay={0.08}>
             <figure className="relative min-h-[280px] overflow-hidden rounded-[2rem] text-white">
-              <img src={photos.meeting} alt="Team planning in a bright room" className="absolute inset-0 h-full w-full object-cover" />
-              <div className="absolute inset-0 bg-[#14181f]/55" />
+              <img src={photos.meeting} alt="Two colleagues reviewing an account at a table" className="absolute inset-0 h-full w-full object-cover object-[center_30%]" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0c1210]/88 via-[#0c1210]/42 to-[#0c1210]/10" />
               <figcaption className="relative flex h-full min-h-[320px] flex-col justify-end p-8">
                 <p className="text-[11px] font-medium uppercase tracking-[0.28em] text-[#e6c98a]">Business</p>
                 <h2 className="mt-3 font-[family-name:var(--font-display)] text-4xl font-medium leading-[1.05] tracking-[-0.035em]">
