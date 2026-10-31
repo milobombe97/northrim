@@ -3,7 +3,7 @@ import { clearAccount, saveAccount, saveClients, type Account, type KycStatus } 
 import { ledgerKey, loadDismissedReceiptIds, type Transaction } from './banking'
 import type { StoredFile } from './files'
 import { type KycFileKind, kycFileKey, saveStoredFile } from './fileStore'
-import { supabase } from '../lib/supabase'
+import { supabase, supabaseAnonKey, supabaseUrl } from '../lib/supabase'
 import { sortTransactions } from './transactionsView'
 
 export function normalizeAuthEmail(email: string) {
@@ -619,15 +619,14 @@ export async function refreshClientsFromRemote() {
 }
 
 function staffFunctionUrl() {
-  const url = import.meta.env.VITE_SUPABASE_URL as string | undefined
-  if (!url) return null
-  return `${url.replace(/\/$/, '')}/functions/v1/admin-staff`
+  if (!supabaseUrl) return null
+  return `${supabaseUrl.replace(/\/$/, '')}/functions/v1/admin-staff`
 }
 
 async function staffFunctionRequest(body: Record<string, unknown>): Promise<{ error?: string; admin?: AdminUser }> {
   if (!supabase) return { error: 'Supabase is not configured.' }
   const endpoint = staffFunctionUrl()
-  const anon = import.meta.env.VITE_SUPABASE_ANON_KEY as string | undefined
+  const anon = supabaseAnonKey
   if (!endpoint || !anon) return { error: 'Supabase is not configured.' }
 
   const { data: sessionData } = await supabase.auth.getSession()

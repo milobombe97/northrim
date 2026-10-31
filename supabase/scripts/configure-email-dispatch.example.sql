@@ -4,7 +4,7 @@
 insert into internal.email_dispatch_config (id, function_url, webhook_secret)
 values (
   1,
-  'https://YOUR_PROJECT_REF.supabase.co/functions/v1/transactional-email',
+  'https://zgixrjmjhyyivdxwwvvc.supabase.co/functions/v1/transactional-email',
   'YOUR_EMAIL_WEBHOOK_SECRET'
 )
 on conflict (id) do update set

@@ -10,7 +10,7 @@ This copy uses its **own** Supabase project (not the original Nevolute database)
 Local frontend `.env`:
 
 ```env
-VITE_SUPABASE_URL=https://YOUR_NEW_REF.supabase.co
+VITE_SUPABASE_URL=https://zgixrjmjhyyivdxwwvvc.supabase.co
 VITE_SUPABASE_ANON_KEY=your-new-anon-key
 VITE_PUBLIC_SITE_URL=https://northrimbankinc.com
 ```
@@ -20,7 +20,7 @@ VITE_PUBLIC_SITE_URL=https://northrimbankinc.com
 ```bash
 cd north-rim-bank
 npx supabase login
-npx supabase link --project-ref YOUR_NEW_REF
+npx supabase link --project-ref zgixrjmjhyyivdxwwvvc
 npx supabase db push
 ```
 
@@ -29,7 +29,7 @@ npx supabase db push
 Dashboard → **Authentication** → **URL Configuration**:
 
 - **Site URL:** `https://northrimbankinc.com`
-- **Redirect URLs:** `https://northrimbankinc.com/**`, `http://localhost:5173/**`
+- **Redirect URLs:** `https://northrimbankinc.com/**`, `http://localhost:5190/**`
 
 ## 4. Resend (once per project)
 
@@ -39,7 +39,7 @@ Dashboard → **Authentication** → **URL Configuration**:
 ```bash
 npx supabase secrets set RESEND_API_KEY=re_xxxx
 npx supabase secrets set SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
-npx supabase secrets set SUPABASE_URL=https://YOUR_NEW_REF.supabase.co
+npx supabase secrets set SUPABASE_URL=https://zgixrjmjhyyivdxwwvvc.supabase.co
 npx supabase secrets set EMAIL_WEBHOOK_SECRET=long_random_string
 npx supabase secrets set COMPANY_WEB_URL=https://northrimbankinc.com
 npx supabase secrets set DASHBOARD_URL=https://northrimbankinc.com/dashboard

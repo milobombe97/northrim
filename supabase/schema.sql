@@ -94,19 +94,6 @@ alter table public.accounts drop constraint if exists accounts_balance_nonneg;
 alter table public.accounts
   add constraint accounts_balance_nonneg check (balance >= 0);
 
--- Backfill posted balance from approved ledger rows (safe to re-run).
-update public.accounts a
-set balance = coalesce(
-  (
-    select sum(t.amount)
-    from public.transactions t
-    where t.user_id = a.user_id
-      and t.account_id = a.code
-      and (t.status is null or t.status = 'approved')
-  ),
-  0
-);
-
 -- ---------------------------------------------------------------------------
 -- Transactions. account_id stores the account code and points at accounts.
 -- ---------------------------------------------------------------------------
@@ -144,6 +131,19 @@ alter table public.transactions
 create index if not exists transactions_user_date_idx on public.transactions (user_id, date desc);
 create index if not exists transactions_user_account_idx on public.transactions (user_id, account_id);
 create index if not exists transactions_status_idx on public.transactions (status);
+
+-- Backfill posted balance from approved ledger rows (safe to re-run).
+update public.accounts a
+set balance = coalesce(
+  (
+    select sum(t.amount)
+    from public.transactions t
+    where t.user_id = a.user_id
+      and t.account_id = a.code
+      and (t.status is null or t.status = 'approved')
+  ),
+  0
+);
 
 -- Give every profile the four accounts, then any extra codes already on the ledger.
 insert into public.accounts (user_id, code, name, currency)
